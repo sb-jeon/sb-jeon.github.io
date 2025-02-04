@@ -12,6 +12,7 @@
     <button id="userIdBtn">userId 연동</button>
     <button id="eventBtn">event</button>
     <button id="purchaseBtn">purchase event</button>
+    <button id="msgEventBtn">msg event</button>
 
     <script
       src="https://cdn.flarelane.com/WebSDK-staging.js"
@@ -26,6 +27,7 @@
       const deviceId = document.getElementById("deviceId");
       const userIdButton = document.getElementById("userIdBtn");
       const eventButton = document.getElementById("eventBtn");
+      const msgEventButton = document.getElementById("msgEventBtn");
       const pusrchaseButton = document.getElementById("purchaseBtn");
 
       const userId = "sb.jeon";
@@ -45,6 +47,10 @@
 
       pusrchaseButton.addEventListener("click", async () => {
         FlareLane.trackEvent("test_purchase");
+      });
+
+      msgEventButton.addEventListener("click", async () => {
+        FlareLane.trackEvent("msgEvent");
       });
     </script>
   </body>
