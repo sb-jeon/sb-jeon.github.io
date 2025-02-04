@@ -88,33 +88,11 @@
           .then((res) => console.log(res))
           .catch((err) => console.error(err));
       });
-      msgEvent2Button.addEventListener("click", async () => {
-        const options = {
-          method: "POST",
-          headers: {
-            accept: "application/json",
-            "content-type": "application/json",
-            Authorization: "Bearer 4kq7j2d1cBpKZyKfv7GZp",
-          },
-          body: JSON.stringify({
-            events: [
-              {
-                type: "msgEvent",
-                subjectType: "user",
-                subjectId: userId,
-                data: { eventName: "개인화메시지 테스트2", title: "버튼2" },
-              },
-            ],
-          }),
-        };
-
-        fetch(
-          "https://staging-api.flarelane.com/v1/projects/12f9f47f-5a35-4aba-8d36-9a41714a0db7/track",
-          options
-        )
-          .then((res) => res.json())
-          .then((res) => console.log(res))
-          .catch((err) => console.error(err));
+      msgEvent2Button.addEventListener("click", () => {
+        FlareLane.trackEvent("test_purchase", {
+          eventName: "개인화메시지 테스트2",
+          title: "버튼2",
+        });
       });
 
       setTagButton.addEventListener("click", async () => {
