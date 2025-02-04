@@ -48,6 +48,11 @@
         console.log(id);
       });
 
+      FlareLane.getIsSubscribed((isSubscribed) => {
+        console.log(isSubscribed);
+        isSubscribed.innerText = isSubscribed ? "구독중.!" : "구독중아님..;;";
+      });
+
       userIdButton.addEventListener("click", async () => {
         FlareLane.setUserId(userId);
       });
