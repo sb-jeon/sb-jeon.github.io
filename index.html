@@ -19,6 +19,21 @@
     <button id="subscribeBtn">subscribe</button>
     <button id="unsubscribeBtn">unsubscribe</button>
 
+    <div
+      id="notificationContainer"
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        background-color: beige;
+      "
+    >
+      <div id="notificationBody">notificationBody</div>
+      <div id="notificationId">notificationId</div>
+      <div id="platform">platform</div>
+    </div>
+
     <script
       src="https://cdn.flarelane.com/WebSDK-staging.js"
       charset="UTF-8"
@@ -31,6 +46,10 @@
     <script>
       const deviceId = document.getElementById("deviceId");
       const isSubscribedDiv = document.getElementById("isSubscribed");
+
+      const notificationBodyDiv = document.getElementById("notificationBody");
+      const notificationIdDiv = document.getElementById("notifiactionId");
+      const platformDiv = document.getElementById("platform");
 
       const userIdButton = document.getElementById("userIdBtn");
       const eventButton = document.getElementById("eventBtn");
@@ -45,26 +64,28 @@
 
       FlareLane.getDeviceId((id) => {
         deviceId.innerText = id;
-        console.log(id);
       });
 
       FlareLane.getIsSubscribed((isSubscribed) => {
-        console.log(isSubscribed);
         isSubscribedDiv.innerText = isSubscribed
           ? "구독중.!"
           : "구독중아님..;;";
       });
 
       FlareLane.setConvertedHandler((notification) => {
-        // Do something...
         console.log(notification);
+        const { body, notificationId, platform } = notification;
+
+        notificationBodyDiv.innerText = body;
+        notificationIdDiv = notificationId;
+        platformDiv = platform;
       });
 
       userIdButton.addEventListener("click", async () => {
         FlareLane.setUserId(userId);
       });
 
-      eventButton.addEventListener("click", async () => {
+      eventButton.addEventListener("click", () => {
         FlareLane.trackEvent("test_event");
       });
 
