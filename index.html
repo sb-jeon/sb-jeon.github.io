@@ -105,7 +105,10 @@
       });
 
       purchaseButton.addEventListener("click", async () => {
-        FlareLane.trackEvent("test_purchase");
+        FlareLane.trackEvent("test_purchase", {
+          price: 10000,
+          quantity: 1,
+        });
       });
 
       msgEventButton.addEventListener("click", async () => {
