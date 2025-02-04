@@ -9,6 +9,7 @@
     FlareLane
 
     <div id="deviceId">device id</div>
+    <button id="userIdBtn">userId 연동</button>
 
     <script
       src="https://cdn.flarelane.com/WebSDK-staging.js"
@@ -21,10 +22,17 @@
     </script>
     <script>
       const deviceId = document.getElementById("deviceId");
+      const userIdButton = document.getElementById("userIdBtn");
+
+      const userId = "sb.jeon";
 
       FlareLane.getDeviceId((id) => {
         deviceId.innerText = id;
         console.log(id);
+      });
+
+      userIdButton.addEventListener("click", async () => {
+        await FlareLane.setUserId(userId);
       });
     </script>
   </body>
