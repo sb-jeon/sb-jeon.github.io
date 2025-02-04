@@ -74,11 +74,10 @@
 
       FlareLane.setConvertedHandler((notification) => {
         console.log(notification);
-        const { body, notificationId, platform } = notification;
 
-        notificationBodyDiv.innerText = body;
-        notificationIdDiv = notificationId;
-        platformDiv = platform;
+        notificationBodyDiv.innerText = notification.body;
+        notificationIdDiv = notification.notificationId;
+        platformDiv = notification.platform;
       });
 
       userIdButton.addEventListener("click", async () => {
