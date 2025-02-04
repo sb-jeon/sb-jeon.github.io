@@ -10,14 +10,26 @@
 
     <div id="deviceId">device id</div>
     <div id="isSubscribed">isSubscribed</div>
-    <button id="userIdBtn">userId 연동</button>
+
+    <div>
+      <button id="userIdBtn">set userId</button>
+      <button id="removeUserIdBtn">remove userId</button>
+    </div>
+
     <button id="eventBtn">event</button>
     <button id="purchaseBtn">purchase event</button>
     <button id="msgEventBtn">msg event</button>
     <button id="msgEventBtn2">msg event2</button>
-    <button id="setTagBtn">tag</button>
-    <button id="subscribeBtn">subscribe</button>
-    <button id="unsubscribeBtn">unsubscribe</button>
+
+    <div>
+      <button id="setTagBtn">set tag</button>
+      <button id="removeTagBtn">remove tag</button>
+    </div>
+
+    <div>
+      <button id="subscribeBtn">subscribe</button>
+      <button id="unsubscribeBtn">unsubscribe</button>
+    </div>
 
     <div
       id="notificationContainer"
@@ -48,11 +60,16 @@
       const notificationInfoDiv = document.getElementById("notificationInfo");
 
       const userIdButton = document.getElementById("userIdBtn");
+      const removeUserIdButton = document.getElementById("removeUserIdBtn");
+
       const eventButton = document.getElementById("eventBtn");
       const msgEventButton = document.getElementById("msgEventBtn");
       const msgEvent2Button = document.getElementById("msgEventBtn2");
       const purchaseButton = document.getElementById("purchaseBtn");
+
       const setTagButton = document.getElementById("setTagBtn");
+      const removeTagButton = document.getElementById("removeTagBtn");
+
       const subscribeButton = document.getElementById("subscribeBtn");
       const unsubscribeButton = document.getElementById("unsubscribeBtn");
 
@@ -81,6 +98,9 @@
       userIdButton.addEventListener("click", async () => {
         FlareLane.setUserId(userId);
       });
+      removeUserIdBtn.addEventListener("click", async () => {
+        FlareLane.setUserId(null);
+      });
 
       eventButton.addEventListener("click", () => {
         FlareLane.trackEvent("test_event");
@@ -103,8 +123,11 @@
         });
       });
 
-      setTagButton.addEventListener("click", async () => {
+      setTagButton.addEventListener("click", () => {
         FlareLane.setTags({ tagName: "setTag테스트", tagType: "setTag" });
+      });
+      removeUserIdBtn.addEventListener("click", () => {
+        FlareLane.setTags(null);
       });
 
       const subscribedCallback = (isSubscribed) => {
