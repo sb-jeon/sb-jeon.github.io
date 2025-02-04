@@ -55,6 +55,11 @@
           : "구독중아님..;;";
       });
 
+      FlareLane.setConvertedHandler((notification) => {
+        // Do something...
+        console.log(notification);
+      });
+
       userIdButton.addEventListener("click", async () => {
         FlareLane.setUserId(userId);
       });
