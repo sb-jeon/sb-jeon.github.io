@@ -9,12 +9,15 @@
     FlareLane
 
     <div id="deviceId">device id</div>
+    <div id="isSubscribed">isSubscribed</div>
     <button id="userIdBtn">userId 연동</button>
     <button id="eventBtn">event</button>
     <button id="purchaseBtn">purchase event</button>
     <button id="msgEventBtn">msg event</button>
     <button id="msgEventBtn2">msg event2</button>
     <button id="setTagBtn">tag</button>
+    <button id="subscribeBtn">subscribe</button>
+    <button id="unsubscribeBtn">unsubscribe</button>
 
     <script
       src="https://cdn.flarelane.com/WebSDK-staging.js"
@@ -27,12 +30,16 @@
     </script>
     <script>
       const deviceId = document.getElementById("deviceId");
+      const isSubscribed = document.getElementById("isSubscribed");
+
       const userIdButton = document.getElementById("userIdBtn");
       const eventButton = document.getElementById("eventBtn");
       const msgEventButton = document.getElementById("msgEventBtn");
       const msgEvent2Button = document.getElementById("msgEventBtn2");
       const purchaseButton = document.getElementById("purchaseBtn");
       const setTagButton = document.getElementById("setTagBtn");
+      const subscribeButton = document.getElementById("subscribeBtn");
+      const unsubscribeButton = document.getElementById("unsubscribeBtn");
 
       const userId = "sb.jeon";
 
@@ -112,6 +119,18 @@
 
       setTagButton.addEventListener("click", async () => {
         FlareLane.setTags({ tagName: "setTag테스트", tagType: "setTag" });
+      });
+
+      const subscribedCallback = (isSubscribed) => {
+        console.log(isSubscribed);
+        isSubscribed.innerText = isSubscribed ? "구독중.!" : "구독중아님..;;";
+      };
+
+      subscribeButton.addEventListener("click", async () => {
+        FlareLane.setIsSubscribed(true, subscribedCallback);
+      });
+      unsubscribeButton.addEventListener("click", async () => {
+        FlareLane.setIsSubscribed(false, subscribedCallback);
       });
     </script>
   </body>
