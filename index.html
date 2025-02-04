@@ -90,8 +90,6 @@
 
         const { body, notificationId, platform } = await notification;
 
-        console.log(body, notificationId, platform);
-
         notificationInfoDiv.innerText = `${body} / ${notificationId} / ${platform}`;
       });
 
@@ -126,13 +124,15 @@
       setTagButton.addEventListener("click", () => {
         FlareLane.setTags({ tagName: "setTag테스트", tagType: "setTag" });
       });
-      removeUserIdBtn.addEventListener("click", () => {
+      removeTagButton.addEventListener("click", () => {
         FlareLane.setTags(null);
       });
 
       const subscribedCallback = (isSubscribed) => {
         console.log(isSubscribed);
-        isSubscribed.innerText = isSubscribed ? "구독중.!" : "구독중아님..;;";
+        isSubscribedDiv.innerText = isSubscribed
+          ? "구독중.!"
+          : "구독중아님..;;";
       };
 
       subscribeButton.addEventListener("click", async () => {
