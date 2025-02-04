@@ -13,6 +13,7 @@
     <button id="eventBtn">event</button>
     <button id="purchaseBtn">purchase event</button>
     <button id="msgEventBtn">msg event</button>
+    <button id="setTagBtn">tag</button>
 
     <script
       src="https://cdn.flarelane.com/WebSDK-staging.js"
@@ -28,7 +29,8 @@
       const userIdButton = document.getElementById("userIdBtn");
       const eventButton = document.getElementById("eventBtn");
       const msgEventButton = document.getElementById("msgEventBtn");
-      const pusrchaseButton = document.getElementById("purchaseBtn");
+      const purchaseButton = document.getElementById("purchaseBtn");
+      const setTagButton = document.getElementById("setTagBtn");
 
       const userId = "sb.jeon";
 
@@ -45,7 +47,7 @@
         FlareLane.trackEvent("test_event");
       });
 
-      pusrchaseButton.addEventListener("click", async () => {
+      purchaseButton.addEventListener("click", async () => {
         FlareLane.trackEvent("test_purchase");
       });
 
@@ -76,6 +78,10 @@
           .then((res) => res.json())
           .then((res) => console.log(res))
           .catch((err) => console.error(err));
+      });
+
+      setTagButton.addEventListener("click", async () => {
+        FlareLane.setTags({ tagName: "setTag테스트", tagType: "setTag" });
       });
     </script>
   </body>
