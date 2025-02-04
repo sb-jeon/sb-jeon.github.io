@@ -29,9 +29,7 @@
         background-color: beige;
       "
     >
-      <div id="notificationBody">notificationBody</div>
-      <div id="notificationId">notificationId</div>
-      <div id="platform">platform</div>
+      <div id="notificationInfo">notificationInfo</div>
     </div>
 
     <script
@@ -47,9 +45,7 @@
       const deviceId = document.getElementById("deviceId");
       const isSubscribedDiv = document.getElementById("isSubscribed");
 
-      const notificationBodyDiv = document.getElementById("notificationBody");
-      const notificationIdDiv = document.getElementById("notificationId");
-      const platformDiv = document.getElementById("platform");
+      const notificationInfoDiv = document.getElementById("notificationInfo");
 
       const userIdButton = document.getElementById("userIdBtn");
       const eventButton = document.getElementById("eventBtn");
@@ -79,9 +75,7 @@
 
         console.log(body, notificationId, platform);
 
-        notificationBodyDiv.innerText = body;
-        notificationIdDiv = notificationId;
-        platformDiv = platform;
+        notificationInfoDiv.innerText = `${body} / ${notificationId} / ${platform}`;
       });
 
       userIdButton.addEventListener("click", async () => {
