@@ -13,6 +13,7 @@
     <button id="eventBtn">event</button>
     <button id="purchaseBtn">purchase event</button>
     <button id="msgEventBtn">msg event</button>
+    <button id="msgEventBtn2">msg event2</button>
     <button id="setTagBtn">tag</button>
 
     <script
@@ -29,6 +30,7 @@
       const userIdButton = document.getElementById("userIdBtn");
       const eventButton = document.getElementById("eventBtn");
       const msgEventButton = document.getElementById("msgEventBtn");
+      const msgEvent2Button = document.getElementById("msgEventBtn2");
       const purchaseButton = document.getElementById("purchaseBtn");
       const setTagButton = document.getElementById("setTagBtn");
 
@@ -65,7 +67,35 @@
                 type: "msgEvent",
                 subjectType: "user",
                 subjectId: userId,
-                data: { eventName: "개인화메시지 테스트" },
+                data: { eventName: "개인화메시지 테스트", title: "버튼1" },
+              },
+            ],
+          }),
+        };
+
+        fetch(
+          "https://staging-api.flarelane.com/v1/projects/12f9f47f-5a35-4aba-8d36-9a41714a0db7/track",
+          options
+        )
+          .then((res) => res.json())
+          .then((res) => console.log(res))
+          .catch((err) => console.error(err));
+      });
+      msgEvent2Button.addEventListener("click", async () => {
+        const options = {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+            Authorization: "Bearer 4kq7j2d1cBpKZyKfv7GZp",
+          },
+          body: JSON.stringify({
+            events: [
+              {
+                type: "msgEvent",
+                subjectType: "user",
+                subjectId: userId,
+                data: { eventName: "개인화메시지 테스트2", title: "버튼2" },
               },
             ],
           }),
