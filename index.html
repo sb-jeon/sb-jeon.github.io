@@ -8,11 +8,8 @@
   <body>
     FlareLane
 
-    <script>
-      FlareLane.getDeviceId((deviceId) => {
-        console.log(deviceId);
-      });
-    </script>
+    <div id="deviceId">device id</div>
+
     <script
       src="https://cdn.flarelane.com/WebSDK-staging.js"
       charset="UTF-8"
@@ -20,6 +17,14 @@
     <script>
       FlareLane.initialize({
         projectId: "12f9f47f-5a35-4aba-8d36-9a41714a0db7",
+      });
+    </script>
+    <script>
+      const deviceId = document.getElementById("deviceId");
+
+      FlareLane.getDeviceId((id) => {
+        deviceId.innerText = id;
+        console.log(id);
       });
     </script>
   </body>
