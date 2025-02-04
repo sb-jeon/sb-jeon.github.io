@@ -125,7 +125,7 @@
         FlareLane.setTags({ tagName: "setTag테스트", tagType: "setTag" });
       });
       removeTagButton.addEventListener("click", () => {
-        FlareLane.setTags(null);
+        FlareLane.setTags({ tagName: null, tagType: null });
       });
 
       const subscribedCallback = (isSubscribed) => {
