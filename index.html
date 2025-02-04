@@ -30,7 +30,7 @@
     </script>
     <script>
       const deviceId = document.getElementById("deviceId");
-      const isSubscribed = document.getElementById("isSubscribed");
+      const isSubscribedDiv = document.getElementById("isSubscribed");
 
       const userIdButton = document.getElementById("userIdBtn");
       const eventButton = document.getElementById("eventBtn");
@@ -50,7 +50,9 @@
 
       FlareLane.getIsSubscribed((isSubscribed) => {
         console.log(isSubscribed);
-        isSubscribed.innerText = isSubscribed ? "구독중.!" : "구독중아님..;;";
+        isSubscribedDiv.innerText = isSubscribed
+          ? "구독중.!"
+          : "구독중아님..;;";
       });
 
       userIdButton.addEventListener("click", async () => {
@@ -66,35 +68,13 @@
       });
 
       msgEventButton.addEventListener("click", async () => {
-        const options = {
-          method: "POST",
-          headers: {
-            accept: "application/json",
-            "content-type": "application/json",
-            Authorization: "Bearer 4kq7j2d1cBpKZyKfv7GZp",
-          },
-          body: JSON.stringify({
-            events: [
-              {
-                type: "msgEvent",
-                subjectType: "user",
-                subjectId: userId,
-                data: { eventName: "개인화메시지 테스트", title: "버튼1" },
-              },
-            ],
-          }),
-        };
-
-        fetch(
-          "https://staging-api.flarelane.com/v1/projects/12f9f47f-5a35-4aba-8d36-9a41714a0db7/track",
-          options
-        )
-          .then((res) => res.json())
-          .then((res) => console.log(res))
-          .catch((err) => console.error(err));
+        FlareLane.trackEvent("msgEvent", {
+          eventName: "개인화메시지 테스트1",
+          title: "버튼1",
+        });
       });
       msgEvent2Button.addEventListener("click", () => {
-        FlareLane.trackEvent("test_purchase", {
+        FlareLane.trackEvent("msgEvent", {
           eventName: "개인화메시지 테스트2",
           title: "버튼2",
         });
