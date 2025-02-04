@@ -72,12 +72,16 @@
           : "구독중아님..;;";
       });
 
-      FlareLane.setConvertedHandler((notification) => {
+      FlareLane.setConvertedHandler(async (notification) => {
         console.log(notification);
 
-        notificationBodyDiv.innerText = notification.body;
-        notificationIdDiv = notification.notificationId;
-        platformDiv = notification.platform;
+        const { body, notificationId, platform } = await notification;
+
+        console.log(body, notificationid, platform);
+
+        notificationBodyDiv.innerText = body;
+        notificationIdDiv = notificationId;
+        platformDiv = platform;
       });
 
       userIdButton.addEventListener("click", async () => {
