@@ -31,6 +31,10 @@
       <button id="unsubscribeBtn">unsubscribe</button>
     </div>
 
+    <div>
+      <button id="userBtn">user</button>
+    </div>
+
     <div
       id="notificationContainer"
       style="
@@ -72,6 +76,8 @@
 
       const subscribeButton = document.getElementById("subscribeBtn");
       const unsubscribeButton = document.getElementById("unsubscribeBtn");
+
+      const userButton = document.getElementById("userBtn");
 
       const userId = "sb.jeon";
 
@@ -143,6 +149,36 @@
       });
       unsubscribeButton.addEventListener("click", async () => {
         FlareLane.setIsSubscribed(false, subscribedCallback);
+      });
+
+      userButton.addEventListener("click", async () => {
+        const options = {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "content-type": "application/json",
+            Authorization: "Bearer 4kq7j2d1cBpKZyKfv7GZp",
+          },
+          body: JSON.stringify({
+            userAttributes: [
+              {
+                userId: userId,
+                name: "soob",
+                phoneNumber: "+821041389227",
+                email: "sb.jeon@flarelane.com",
+                dob: "2000-08-18",
+              },
+            ],
+          }),
+        };
+
+        fetch(
+          "https://staging-api.flarelane.com/v1/projects/12f9f47f-5a35-4aba-8d36-9a41714a0db7/track",
+          options
+        )
+          .then((res) => res.json())
+          .then((res) => console.log(res))
+          .catch((err) => console.error(err));
       });
     </script>
   </body>
