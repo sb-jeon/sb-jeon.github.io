@@ -139,9 +139,7 @@
 
       const subscribedCallback = (isSubscribed) => {
         console.log(isSubscribed);
-        isSubscribedDiv.innerText = isSubscribed
-          ? "구독중.!"
-          : "구독중아님..;;";
+        isSubscribedDiv.innerText = isSubscribed ? "구독중.!" : "구독중아님..";
       };
 
       subscribeButton.addEventListener("click", async () => {
