@@ -63,6 +63,12 @@
 
         if (actionId === "test1") {
           console.log("in");
+
+          fetch("https://webhook.site/7345b5af-13d0-4c23-b818-4f4ab0ead3cb", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+          });
+
           FlareLane.displayInApp("fail2");
         }
       });
