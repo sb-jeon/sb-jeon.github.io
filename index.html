@@ -62,6 +62,8 @@
         console.log(iam, actionId);
 
         if (actionId === "test1") {
+          console.log("in");
+          FlareLaneIAM.close(1);
           FlareLane.displayInApp("fail2");
         }
       });
